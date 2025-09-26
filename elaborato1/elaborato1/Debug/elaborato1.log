@@ -1,0 +1,7 @@
+﻿  elaborato1.c
+C:\Users\gigio\source\repos\elaborato1\elaborato1.c(39,5): warning C4098: 'main': la funzione 'void' restituisce un valore
+C:\Users\gigio\source\repos\elaborato1\elaborato1.c(9,15): warning C4305: 'inizializzazione': troncamento da 'double' a 'float'
+C:\Users\gigio\source\repos\elaborato1\elaborato1.c(11,17): warning C4047: 'inizializzazione': 'signed char' differisce da 'char [4]' nei livelli di riferimento indiretto
+C:\Users\gigio\source\repos\elaborato1\elaborato1.c(12,19): warning C4047: 'inizializzazione': 'unsigned char' differisce da 'char [2]' nei livelli di riferimento indiretto
+C:\Users\gigio\source\repos\elaborato1\elaborato1.c(20,29): warning C4305: 'inizializzazione': troncamento da '__int64' a 'unsigned long'
+  elaborato1.vcxproj -> C:\Users\gigio\source\repos\elaborato1\Debug\elaborato1.exe
