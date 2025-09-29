@@ -30,15 +30,15 @@ void main() {
     printf("TYPE: int NAME: \"i\" VALUE: %d MIN: %d MAX: %d BYTE: %u\n", i, INT_MIN, INT_MAX, sizeof(i));
     printf("TYPE: signed int NAME: \"si\" VALUE: %d MIN: %d MAX: %d BYTE: %u\n", si, INT_MIN, INT_MAX, sizeof(si));
     printf("TYPE: unsigned int NAME: \"ui\" VALUE: %u MIN: %d MAX: %d BYTE: %u\n", ui, 0, UINT_MAX, sizeof(ui));
-    printf("TYPE: short int NAME: \"shi\" VALUE: %d MIN: %d MAX: %d BYTE: %u\n", shi, SHRT_MIN, SHRT_MAX, sizeof(shi));
-    printf("TYPE: short signed int NAME: \"ssi\" VALUE: %d MIN: %d MAX: %d BYTE: %u\n", ssi, SHRT_MIN, SHRT_MAX, sizeof(ssi));
-    printf("TYPE: short unsigned int NAME: \"usi\" VALUE: %d MIN: %d MAX: %d BYTE: %u\n", usi, 0, USHRT_MAX, sizeof(usi));
-    printf("TYPE: long int NAME: \"li\" VALUE: %d MIN: %d MAX: %d BYTE: %u\n", li, LONG_MIN, LONG_MAX, sizeof(li));
-    printf("TYPE: signed long int NAME: \"sli\" VALUE: %d MIN: %d MAX: %d BYTE: %u\n", sli, LONG_MIN, LONG_MAX, sizeof(sli));
-    printf("TYPE: unsigned long int NAME: \"uli\" VALUE: %d MIN: %d MAX: %d BYTE: %u\n", uli, 0UL, ULONG_MAX, sizeof(uli));
+    printf("TYPE: short int NAME: \"shi\" VALUE: %hd MIN: %d MAX: %d BYTE: %u\n", shi, SHRT_MIN, SHRT_MAX, sizeof(shi));
+    printf("TYPE: short signed int NAME: \"ssi\" VALUE: %hd MIN: %d MAX: %d BYTE: %u\n", ssi, SHRT_MIN, SHRT_MAX, sizeof(ssi));
+    printf("TYPE: unsigned short int NAME: \"usi\" VALUE: %hu MIN: %d MAX: %d BYTE: %u\n", usi, 0, USHRT_MAX, sizeof(usi));
+    printf("TYPE: long int NAME: \"li\" VALUE: %ld MIN: %d MAX: %d BYTE: %u\n", li, LONG_MIN, LONG_MAX, sizeof(li));
+    printf("TYPE: signed long int NAME: \"sli\" VALUE: %ld MIN: %d MAX: %d BYTE: %u\n", sli, LONG_MIN, LONG_MAX, sizeof(sli));
+    printf("TYPE: unsigned long int NAME: \"uli\" VALUE: %lu MIN: %d MAX: %d BYTE: %u\n", uli, 0, ULONG_MAX, sizeof(uli));
     printf("TYPE: float NAME: \"f\" VALUE: %f MIN: %e MAX: %e BYTE: %u\n", f, FLT_MIN, FLT_MAX, sizeof(f));
     printf("TYPE: double NAME: \"d\" VALUE: %f MIN: %e MAX: %e BYTE: %u\n", d, DBL_MIN, DBL_MAX, sizeof(d));
-    printf("TYPE: long double NAME: \"ld\" VALUE: %e MIN: %e MAX: %e BYTE: %u", ld, LDBL_MIN, LDBL_MAX, sizeof(ld));
+    printf("TYPE: long double NAME: \"ld\" VALUE: %lf MIN: %e MAX: %e BYTE: %u\n", ld, LDBL_MIN, LDBL_MAX, sizeof(ld));
 
     return 0;
 }
