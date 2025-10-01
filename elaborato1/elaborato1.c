@@ -23,22 +23,99 @@ void main() {
     /*stampa a console per ogni variabile, seguendo il formato:
     TYPE: char NAME: c VALUE: x MIN: -128 MAX: 127 BYTE: 1
     */
-
-    printf("TYPE: char NAME: \"c\" VALUE: %c MIN: %d MAX: %d BYTE: %u\n", c, CHAR_MIN, CHAR_MAX, sizeof(c));
-    printf("TYPE: signed char NAME: \"sc\" VALUE: %c MIN: %d MAX: %d BYTE: %u\n", sc, SCHAR_MIN, SCHAR_MAX, sizeof(sc));
-    printf("TYPE: unsigned char NAME: \"uc\" VALUE: %c MIN: %d MAX: %d BYTE: %u\n", uc, 0, UCHAR_MAX, sizeof(uc));
-    printf("TYPE: int NAME: \"i\" VALUE: %d MIN: %d MAX: %d BYTE: %u\n", i, INT_MIN, INT_MAX, sizeof(i));
-    printf("TYPE: signed int NAME: \"si\" VALUE: %d MIN: %d MAX: %d BYTE: %u\n", si, INT_MIN, INT_MAX, sizeof(si));
-    printf("TYPE: unsigned int NAME: \"ui\" VALUE: %u MIN: %d MAX: %d BYTE: %u\n", ui, 0, UINT_MAX, sizeof(ui));
-    printf("TYPE: short int NAME: \"shi\" VALUE: %hd MIN: %d MAX: %d BYTE: %u\n", shi, SHRT_MIN, SHRT_MAX, sizeof(shi));
-    printf("TYPE: short signed int NAME: \"ssi\" VALUE: %hd MIN: %d MAX: %d BYTE: %u\n", ssi, SHRT_MIN, SHRT_MAX, sizeof(ssi));
-    printf("TYPE: unsigned short int NAME: \"usi\" VALUE: %hu MIN: %d MAX: %d BYTE: %u\n", usi, 0, USHRT_MAX, sizeof(usi));
-    printf("TYPE: long int NAME: \"li\" VALUE: %ld MIN: %d MAX: %d BYTE: %u\n", li, LONG_MIN, LONG_MAX, sizeof(li));
-    printf("TYPE: signed long int NAME: \"sli\" VALUE: %ld MIN: %d MAX: %d BYTE: %u\n", sli, LONG_MIN, LONG_MAX, sizeof(sli));
-    printf("TYPE: unsigned long int NAME: \"uli\" VALUE: %lu MIN: %d MAX: %d BYTE: %u\n", uli, 0, ULONG_MAX, sizeof(uli));
-    printf("TYPE: float NAME: \"f\" VALUE: %f MIN: %e MAX: %e BYTE: %u\n", f, FLT_MIN, FLT_MAX, sizeof(f));
-    printf("TYPE: double NAME: \"d\" VALUE: %f MIN: %e MAX: %e BYTE: %u\n", d, DBL_MIN, DBL_MAX, sizeof(d));
-    printf("TYPE: long double NAME: \"ld\" VALUE: %lf MIN: %e MAX: %e BYTE: %u\n", ld, LDBL_MIN, LDBL_MAX, sizeof(ld));
-
+    printf("TYPE %-15sNAME %-15sVALUE %-15sMIN %-15sMAX %-15sBYTE\n", "", "", "", "", "");
+    
+    //CHAR
+    printf("%-19s %-20s", "char", "\"c\"");
+    printf("%-21c", c);
+    printf("%-19d", CHAR_MIN);
+    printf("%-19d", CHAR_MAX);
+    printf("%u\n", sizeof(c));
+    //SIGNED CHAR
+    printf("%-19s %-20s", "signed char", "\"sc\"");
+    printf("%-21c", sc);
+    printf("%-19d", SCHAR_MIN);
+    printf("%-19d", SCHAR_MAX);
+    printf("%u\n", sizeof(sc));
+    //UNSIGNED CHAR
+    printf("%-19s %-20s", "unsigned char", "\"uc\"");
+    printf("%-21c", uc);
+    printf("%-19d", 0);
+    printf("%-19u", UCHAR_MAX);
+    printf("%u\n", sizeof(uc));
+    //INT
+    printf("%-19s %-20s", "int", "\"i\"");
+    printf("%-21d", i);
+    printf("%-19d", INT_MIN);
+    printf("%-19d", INT_MAX);
+    printf("%u\n", sizeof(i));
+    //SIGNED INT
+    printf("%-19s %-20s", "signed int", "\"si\"");
+    printf("%-21d", si);    
+    printf("%-19d", INT_MIN);
+    printf("%-19d", INT_MAX);
+    printf("%u\n", sizeof(si));
+    //UNSIGNED INT
+    printf("%-19s %-20s", "unsigned int", "\"ui\"");
+    printf("%-21d", ui);
+    printf("%-19d", 0);
+    printf("%-19u", UINT_MAX);
+    printf("%u\n", sizeof(ui));
+    //SHORT INT
+    printf("%-19s %-20s", "short int", "\"shi\"");
+    printf("%-21hd", shi);
+    printf("%-19d", SHRT_MIN);
+    printf("%-19d", SHRT_MAX);
+    printf("%u\n", sizeof(shi));
+    //SIGNED SHORT INT
+    printf("%-19s %-20s", "signed short int", "\"ssi\"");
+    printf("%-21hd", ssi);
+    printf("%-19d", SHRT_MIN);
+    printf("%-19d", SHRT_MAX);
+    printf("%u\n", sizeof(ssi));
+    //UNSIGNED SHORT INT
+    printf("%-19s %-20s", "unsigned short int", "\"usi\"");
+    printf("%-21hu", usi);
+    printf("%-19d", 0);
+    printf("%-19u", USHRT_MAX);
+    printf("%u\n", sizeof(usi));
+    //LONG INT
+    printf("%-19s %-20s", "long int", "\"li\"");
+    printf("%-21ld", li);
+    printf("%-19d", LONG_MIN);
+    printf("%-19d", LONG_MAX);
+    printf("%u\n", sizeof(li));
+    //SIGNED LONG INT
+    printf("%-19s %-20s", "signed long int", "\"sli\"");
+    printf("%-21ld", sli);
+    printf("%-19d", LONG_MIN);
+    printf("%-19d", LONG_MAX);
+    printf("%u\n", sizeof(sli));
+    //UNSIGNED LONG INT
+    printf("%-19s %-20s", "unsigned long int", "\"uli\"");
+    printf("%-21lu", uli);
+    printf("%-19d", 0);
+    printf("%-19u", ULONG_MAX);
+    printf("%u\n", sizeof(uli));
+    //FLOAT
+    printf("%-19s %-20s", "float", "\"f\"");
+    printf("%-21f", f);
+    printf("%-19e", FLT_MIN);
+    printf("%-19e", FLT_MAX);
+    printf("%u\n", sizeof(f));
+    //DOUBLE
+    printf("%-19s %-20s", "double", "\"d\"");
+    printf("%-21f", d);
+    printf("%-19e", DBL_MIN);
+    printf("%-19e", DBL_MAX);
+    printf("%u\n", sizeof(d));
+    //LONG DOUBLE
+    printf("%-19s %-20s", "long double", "\"ld\"");
+    printf("%-21lf", ld);
+    printf("%-19e", LDBL_MIN);
+    printf("%-19e", LDBL_MAX);
+    printf("%u\n", sizeof(ld));
+ 
     return 0;
 }
+
