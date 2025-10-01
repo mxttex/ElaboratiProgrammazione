@@ -8,8 +8,8 @@ void main() {
     int i = 10;
     float f = 3.14;
     double d = 5.5;
-    signed char sc = "-10";
-    unsigned char uc = "3";
+    signed char sc = -10;
+    unsigned char uc = 3;
     signed int si = -67;
     unsigned int ui = 17;
     short int shi = 1;
@@ -17,7 +17,7 @@ void main() {
     unsigned short int usi = 254;
     long int li = 1000;
     signed long int sli = -1234;
-    unsigned long int uli = 468793575748;
+    unsigned long int uli = 4687935;
     long double ld = 7.568;
 
     /*stampa a console per ogni variabile, seguendo il formato:
@@ -33,13 +33,13 @@ void main() {
     printf("%u\n", sizeof(c));
     //SIGNED CHAR
     printf("%-19s %-20s", "signed char", "\"sc\"");
-    printf("%-21c", sc);
+    printf("%-21d", sc);
     printf("%-19d", SCHAR_MIN);
     printf("%-19d", SCHAR_MAX);
     printf("%u\n", sizeof(sc));
     //UNSIGNED CHAR
     printf("%-19s %-20s", "unsigned char", "\"uc\"");
-    printf("%-21c", uc);
+    printf("%-21d", uc);
     printf("%-19d", 0);
     printf("%-19u", UCHAR_MAX);
     printf("%u\n", sizeof(uc));
