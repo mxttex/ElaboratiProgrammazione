@@ -33,9 +33,15 @@ void main() {
 		printf("L'equazione si risolve in x = %f", ROOT1(a, b, c));
 		break;
 	default:
-		printf("L'equazione si risolve in x1 = %f e in x2 = %f", ROOT1(a, b, c), ROOT2(a, b, c));
+		printf("L'equazione si risolve in x1 = %f e in x2 = %f\n", ROOT1(a, b, c), ROOT2(a, b, c));
 		break;
 	};
 
+	printf("La funzione ha un punto di %s in %f\n",
+		(MAXIMUM_POINT(a, b, c) ? "massimo" : "minimo"),
+		EXTREME_POINT(a, b, c));
+	/*printf("La funzione ha un punto di %d in %f\n",
+		(MAXIMUM(a, b, c) ),
+		EXTREME_POINT(a, b, c));*/
 	return 0;
 }
