@@ -1,7 +1,7 @@
 void esercizio_triangoli() {
 	//la difficilissima selezione if
 	int alfa, beta, gamma; // ampiezza angoli , in gradi
-	printf(" Che tipo di triangolo abbiamo ? \n Inserisci l ’ ampiezza dei tre angoli in gradi : ");
+	printf("Che tipo di triangolo abbiamo ? \n Inserisci l’ ampiezza dei tre angoli in gradi : ");
 	scanf("%d %d %d", &alfa, &beta, &gamma);
 	/* Dobbiamo c o n t r o l l a r e :
 	- se un triangolo
@@ -15,7 +15,7 @@ void esercizio_triangoli() {
 		if (alfa == 90 || beta == 90 || gamma == 90) {
 			printf("Il triangolo è rettangolo\n");
 		}
-		if (alfa == 60)
+		if (alfa == beta && beta == gamma)
 			printf("Il triangolo è equilatero\n");
 		else if (alfa == beta || beta == gamma || gamma == alfa)
 			printf("Il triangolo è isoscele\n");
