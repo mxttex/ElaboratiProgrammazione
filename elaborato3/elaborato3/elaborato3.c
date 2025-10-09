@@ -1,4 +1,4 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 
@@ -30,7 +30,9 @@ int main() {
     // Gli zeri li avevo contati precedentemente nel primo ciclo.
     res3 = (x == 0 ? 1 : nzeri);
 
-    printf("Risultato:\n");
+    //do NOT add code after this point
+    //OUTPUT
+    printf("\nRisultati\n");
     printf("Numero al contrario: %u\nComplemento a 10: %u\nNumero di zeri: %u\n", res1, res2, res3);
 
     //DON'T REMOVE from submittion
