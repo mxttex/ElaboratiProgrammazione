@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="elaborato3/elaborato3.vcxproj" />
+  <Project Path="elaborato3/elaborato3.vcxproj" Id="29c37d84-268c-48c1-8f19-c6f5db5b7fb8" />
 </Solution>
