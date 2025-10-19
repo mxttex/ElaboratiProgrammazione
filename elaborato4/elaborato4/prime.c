@@ -22,7 +22,7 @@ unsigned short int is_prime(unsigned short int n) {
 //Esempio: posizione 0 --> 2, posizione 1 --> 3, posizione 2 --> 5, etc..-
 unsigned short int nth_prime(unsigned short int n) {
 	int i = 2, c = 0;
-	while (c <= n)
+	while (c < n)
 	{
 		i++;
 		//Richiamo la funzione precedente. Se il numero è primo lo aggiungo nella variabile contatore.
@@ -43,7 +43,7 @@ unsigned short int nth_prime(unsigned short int n) {
 unsigned short int succ_prime(int reset) {
 
 
-    unsigned short int num = primo_succ == 0 ? 2 : primo_succ + 1;
+	unsigned short int num = primo_succ == 0 ? 2 : primo_succ + 1;
 	if (reset != 0)
 	{
 		primo_succ = 2;
