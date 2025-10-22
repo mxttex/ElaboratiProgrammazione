@@ -26,5 +26,8 @@
     <ClInclude Include="esercizio_date.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="daBase10aN.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

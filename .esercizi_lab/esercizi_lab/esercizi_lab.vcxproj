@@ -132,6 +132,7 @@
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="daBase10aN.h" />
     <ClInclude Include="esercizio_date.h" />
     <ClInclude Include="esercizio_triangoli.h" />
   </ItemGroup>
