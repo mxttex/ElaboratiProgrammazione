@@ -6,6 +6,7 @@ struct position {
 	int y;
 };
 
+
 /*
  * Setup a game with the following starting configuration:
  * - table dimension equal to heigth*width
@@ -15,9 +16,9 @@ struct position {
  * - pad2 starting position at pad2_pos
  * - pad length equal to pad_len
  */
-void setup_game(int height, int width, 
-                struct position ball_pos, struct position ball_dir,
-                struct position pad1_pos, struct position pad2_pos, int pad_len);
+void setup_game(int height, int width,
+	struct position ball_pos, struct position ball_dir,
+	struct position pad1_pos, struct position pad2_pos, int pad_len);
 
 /* Moves pad1 one position up. */
 void move_pad1_up(void);
