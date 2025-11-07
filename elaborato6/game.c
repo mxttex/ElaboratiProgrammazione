@@ -1,4 +1,3 @@
-
 #include "game.h"
 
 #define TRUE 1
@@ -22,6 +21,17 @@ struct Game {
     int pad_len;
 } game;
 
+
+static void reset_ball_to_default_position(void) {
+    game.ball_pos = game.default_ball_pos;
+}
+
+static void update_ball_position(void) {
+    game.ball_pos.x += game.ball_dir.x;
+    game.ball_pos.y += game.ball_dir.y;
+}
+
+
 void setup_game(int height, int width,
     struct position ball_pos, struct position ball_dir,
     struct position pad1_pos, struct position pad2_pos, int pad_len) {
@@ -38,154 +48,9 @@ void setup_game(int height, int width,
     pad2_score = 0;
 }
 
-static void reset_ball_to_center(void) {
-    game.ball_pos = game.default_ball_pos;
-}
 
-static int pad_out_of_border(struct position p) {
-    unsigned int pad_len = get_pad_len();
-
-    if (p.y < 0)
-        return TRUE;
-    if (p.y + pad_len - 1 > game.height)
-        return TRUE;
-
-    return FALSE;
-}
-
-static int deny_pad_movement_if_ball_touches_edges(struct position actual_pad_pos, int direction) {
-    unsigned int pad_len = get_pad_len();
-    struct position ball_pos = get_ball_pos();
-
-    if (ball_pos.x == actual_pad_pos.x || ball_pos.x + 1 == actual_pad_pos.x || ball_pos.x - 1 == actual_pad_pos.x) {
-        if (direction == UP && ball_pos.y == actual_pad_pos.y - 1)
-            return TRUE;
-        if (direction == DOWN && ball_pos.y == actual_pad_pos.y + pad_len)
-            return TRUE;
-    }
-    return FALSE;
-}
-
-static struct position check_collision(struct position p) {
-
-    struct position pad_pos1;
-    struct position pad_pos2;
-    unsigned int pad_len;
-    struct position newDirection;
-
-    pad_pos1 = get_pad1_pos();
-    pad_pos2 = get_pad2_pos();
-    pad_len = get_pad_len();
-
-    newDirection = game.ball_dir;
-
-    if (p.x <= pad_pos1.x) {
-        if (p.y >= pad_pos1.y && p.y < (pad_pos1.y + pad_len)) {
-            newDirection.x = RIGHT;
-        }
-        else if (p.y == pad_pos1.y - 1) {
-            newDirection.x = RIGHT;
-            newDirection.y = UP;
-        }
-        else if (p.y == pad_pos1.y + pad_len) {
-            newDirection.x = RIGHT;
-            newDirection.y = DOWN;
-        }
-    }
-    else if (p.x + 1 == pad_pos2.x) {
-        if (p.y >= pad_pos2.y && p.y < (pad_pos2.y + pad_len)) {
-            newDirection.x = LEFT;
-        }
-        else if (p.y == pad_pos2.y - 1) {
-            newDirection.x = LEFT;
-            newDirection.y = UP;
-        }
-        else if (p.y == pad_pos2.y + pad_len) {
-            newDirection.x = LEFT;
-            newDirection.y = DOWN;
-        }
-    }
-
-    if (p.y + 1 == 0) {
-        newDirection.y = DOWN;
-    }
-    else if (p.y - 1 == game.height) {
-        newDirection.y = UP;
-    }
-
-    return newDirection;
-}
-
-struct position get_ball_dir(void) {
-    return game.ball_dir;
-}
-
-void move_ball(void) {
-    struct position ball_pos;
-    struct position current_dir;
-    struct position next_pos;
-    struct position new_dir;
-
-    ball_pos = get_ball_pos();
-    current_dir = get_ball_dir();
-
-    next_pos.x = ball_pos.x + current_dir.x;
-    next_pos.y = ball_pos.y + current_dir.y;
-
-    if (next_pos.x - 1 <= 0) {
-        reset_ball_to_center();
-        pad2_score++;
-        return;
-    }
-    else if (next_pos.x >= game.width) {
-        reset_ball_to_center();
-        pad1_score++;
-        return;
-    }
-    new_dir = check_collision(next_pos);
-
-    game.ball_pos.x = ball_pos.x + new_dir.x;
-    game.ball_pos.y = ball_pos.y + new_dir.y;
-    game.ball_dir = new_dir;
-}
-
-void move_pad1_up(void) {
-    struct position actualPos = get_pad1_pos();
-    struct position newPos = actualPos;
-    newPos.y = newPos.y + UP;
-    if (pad_out_of_border(newPos) == FALSE &&
-        deny_pad_movement_if_ball_touches_edges(actualPos, UP) == FALSE)
-        game.pad1_pos = newPos;
-}
-
-void move_pad1_down(void) {
-    struct position actualPos = get_pad1_pos();
-    struct position newPos = actualPos;
-    newPos.y = newPos.y + DOWN;
-
-    if (pad_out_of_border(newPos) == FALSE &&
-        deny_pad_movement_if_ball_touches_edges(actualPos, DOWN) == FALSE)
-        game.pad1_pos = newPos;
-}
-
-void move_pad2_up(void) {
-    struct position actualPos = get_pad2_pos();
-    struct position newPos = actualPos;
-    newPos.y = newPos.y + UP;
-
-    if (pad_out_of_border(newPos) == FALSE &&
-        deny_pad_movement_if_ball_touches_edges(actualPos, UP) == FALSE)
-        game.pad2_pos = newPos;
-}
-
-void move_pad2_down(void) {
-    struct position actualPos = get_pad2_pos();
-    struct position newPos = actualPos;
-    newPos.y = newPos.y + DOWN;
-
-    if (pad_out_of_border(newPos) == FALSE &&
-        deny_pad_movement_if_ball_touches_edges(actualPos, DOWN) == FALSE)
-        game.pad2_pos = newPos;
+struct position get_ball_pos(void) {
+    return game.ball_pos;
 }
 
 struct position get_pad1_pos(void) {
@@ -196,13 +61,156 @@ struct position get_pad2_pos(void) {
     return game.pad2_pos;
 }
 
-struct position get_ball_pos(void) {
-    return game.ball_pos;
-}
-
 unsigned int get_pad_len(void) {
     return game.pad_len;
 }
+
+void move_ball(void) {
+    struct position ball_pos = get_ball_pos();
+    struct position pad1_pos = get_pad1_pos();
+    struct position pad2_pos = get_pad2_pos();
+    unsigned int pad_len = get_pad_len();
+
+    if (ball_pos.y == 0)
+    {
+        game.ball_dir.y = DOWN;
+    }
+
+    if (ball_pos.y == game.height)
+    {
+        game.ball_dir.y = UP;
+    }
+
+
+    if (ball_pos.x == 0) {
+        pad2_score++;
+        reset_ball_to_default_position();
+        return;
+    }
+
+
+    if (((pad1_pos.x == ball_pos.x) || (pad1_pos.x == ball_pos.x + 1)) && (pad1_pos.y == ball_pos.y + 1))
+    {
+        game.ball_dir.x = RIGHT;
+        game.ball_dir.y = UP; 
+        update_ball_position();
+        return;
+    }
+
+    if (((pad1_pos.x == ball_pos.x) || (pad1_pos.x == ball_pos.x + 1)) && (pad1_pos.y + pad_len) == ball_pos.y)
+    {
+        game.ball_dir.x = RIGHT;
+        game.ball_dir.y = DOWN; 
+        update_ball_position();
+        return;
+    }
+
+    if (((pad2_pos.x - ball_pos.x >= 0) && (pad2_pos.x - ball_pos.x <= 2)) && (pad2_pos.y - 1 == ball_pos.y))
+    {
+        game.ball_dir.x = LEFT;
+        game.ball_dir.y = UP;
+        update_ball_position();
+        return;
+    }
+
+    if (((pad2_pos.x - ball_pos.x >= 0) && (pad2_pos.x - ball_pos.x <= 2)) && (pad2_pos.y + pad_len) == ball_pos.y)
+    {
+        game.ball_dir.x = LEFT;
+        game.ball_dir.y = DOWN;
+        update_ball_position();
+        return;
+    }
+
+    if (ball_pos.y >= pad1_pos.y &&
+        ball_pos.y <= (pad1_pos.y + pad_len) &&
+        (pad1_pos.x == (ball_pos.x - 1)))
+    {
+        game.ball_dir.x = RIGHT;
+        update_ball_position();
+        return;
+    }
+
+    if (ball_pos.y >= pad2_pos.y &&
+        ball_pos.y <= (pad2_pos.y + pad_len) &&
+        (pad2_pos.x == (ball_pos.x + 2)))
+    {
+        game.ball_dir.x = LEFT;
+        update_ball_position();
+        return;
+    }
+
+    update_ball_position();
+
+
+    if (ball_pos.x == game.width) {
+        pad1_score++;
+        reset_ball_to_default_position();
+        return;
+    }
+}
+
+void move_pad1_up(void) {
+    struct position pad1_pos = get_pad1_pos();
+    struct position ball_pos = get_ball_pos();
+
+    if (pad1_pos.y == 0) {
+        return;
+    }
+
+    if (((pad1_pos.x == ball_pos.x) || (pad1_pos.x == ball_pos.x + 1)) && (pad1_pos.y == ball_pos.y + 1))
+    {
+        return;
+    }
+    game.pad1_pos.y += UP;
+}
+
+void move_pad2_up(void) {
+    struct position pad2_pos = get_pad2_pos();
+    struct position ball_pos = get_ball_pos();
+
+    if (pad2_pos.y == 0) {
+        return;
+    }
+
+    if (((pad2_pos.x - ball_pos.x >= 0) && (pad2_pos.x - ball_pos.x <= 2)) && (pad2_pos.y - 1 == ball_pos.y))
+    {
+        return;
+    }
+    game.pad2_pos.y += UP;
+}
+
+void move_pad1_down(void) {
+    struct position pad1_pos = get_pad1_pos();
+    struct position ball_pos = get_ball_pos();
+    unsigned int pad_len = get_pad_len();
+
+    if ((pad1_pos.y + pad_len - 1) == game.height) {
+        return;
+    }
+
+    if (((pad1_pos.x == ball_pos.x) || (pad1_pos.x == ball_pos.x + 1)) && (pad1_pos.y + pad_len) == ball_pos.y)
+    {
+        return;
+    }
+    game.pad1_pos.y += DOWN;
+}
+
+void move_pad2_down(void) {
+    struct position pad2_pos = get_pad2_pos();
+    struct position ball_pos = get_ball_pos();
+    unsigned int pad_len = get_pad_len();
+
+    if ((pad2_pos.y + pad_len - 1) == game.height) {
+        return;
+    }
+
+    if (((pad2_pos.x - ball_pos.x >= 0) && (pad2_pos.x - ball_pos.x <= 2)) && (pad2_pos.y + pad_len) == ball_pos.y)
+    {
+        return;
+    }
+    game.pad2_pos.y += DOWN;
+}
+
 
 unsigned int get_pad1_score(void) {
     return pad1_score;
@@ -211,4 +219,3 @@ unsigned int get_pad1_score(void) {
 unsigned int get_pad2_score(void) {
     return pad2_score;
 }
-
