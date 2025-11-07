@@ -88,11 +88,16 @@ void move_ball(void) {
         return;
     }
 
+    if (ball_pos.x + 1 == game.width) {
+        pad1_score++;
+        reset_ball_to_default_position();
+        return;
+    }
 
     if (((pad1_pos.x == ball_pos.x) || (pad1_pos.x == ball_pos.x + 1)) && (pad1_pos.y == ball_pos.y + 1))
     {
         game.ball_dir.x = RIGHT;
-        game.ball_dir.y = UP; 
+        game.ball_dir.y = UP;
         update_ball_position();
         return;
     }
@@ -100,7 +105,7 @@ void move_ball(void) {
     if (((pad1_pos.x == ball_pos.x) || (pad1_pos.x == ball_pos.x + 1)) && (pad1_pos.y + pad_len) == ball_pos.y)
     {
         game.ball_dir.x = RIGHT;
-        game.ball_dir.y = DOWN; 
+        game.ball_dir.y = DOWN;
         update_ball_position();
         return;
     }
@@ -141,12 +146,6 @@ void move_ball(void) {
 
     update_ball_position();
 
-
-    if (ball_pos.x == game.width) {
-        pad1_score++;
-        reset_ball_to_default_position();
-        return;
-    }
 }
 
 void move_pad1_up(void) {
@@ -210,7 +209,6 @@ void move_pad2_down(void) {
     }
     game.pad2_pos.y += DOWN;
 }
-
 
 unsigned int get_pad1_score(void) {
     return pad1_score;
