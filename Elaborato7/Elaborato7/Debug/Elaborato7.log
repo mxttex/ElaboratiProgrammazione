@@ -1,0 +1,8 @@
+﻿  display.c
+  game.c
+  main.c
+C:\Users\gigio\OneDrive\Desktop\elab7\game.c(21,15): warning C4018: '<': signed/unsigned mismatch
+C:\Users\gigio\OneDrive\Desktop\elab7\game.c(22,16): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+board.obj : warning LNK4099: PDB 'vc142.pdb' was not found with 'board.obj' or at 'C:\Users\gigio\source\repos\Elaborato7\Debug\vc142.pdb'; linking object as if no debug info
+  Elaborato7.vcxproj -> C:\Users\gigio\source\repos\Elaborato7\Debug\Elaborato7.exe
