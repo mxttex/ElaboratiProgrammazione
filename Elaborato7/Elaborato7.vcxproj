@@ -127,16 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\OneDrive\Desktop\elab7\board.h" />
-    <ClInclude Include="..\..\..\OneDrive\Desktop\elab7\curses.h" />
-    <ClInclude Include="..\..\..\OneDrive\Desktop\elab7\display.h" />
-    <ClInclude Include="..\..\..\OneDrive\Desktop\elab7\game.h" />
+    <ClInclude Include="board.h" />
+    <ClInclude Include="curses.h" />
+    <ClInclude Include="display.h" />
+    <ClInclude Include="game.h" />
+    <ClInclude Include="panel.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\OneDrive\Desktop\elab7\display.c" />
-    <ClCompile Include="..\..\..\OneDrive\Desktop\elab7\game.c" />
-    <ClCompile Include="..\..\..\OneDrive\Desktop\elab7\main.c" />
     <ClCompile Include="board.c" />
+    <ClCompile Include="display.c" />
+    <ClCompile Include="game.c" />
+    <ClCompile Include="main.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -82,16 +82,16 @@ int flag_board(int board[][GAME_COLS], unsigned int rows, unsigned int cols, uns
 
     switch (board[i][j]) {
         case FLAG_MINE:
-            board[i][j] == UNKN_MINE;
+            board[i][j] = UNKN_MINE;
             return -1;
         case FLAG_FREE:
-            board[i][j] == UNKN_FREE;
+            board[i][j] = UNKN_FREE;
             return -1;
         case UNKN_FREE:
-            board[i][j] == FLAG_FREE;
+            board[i][j] = FLAG_FREE;
             return 1;
         case UNKN_MINE:
-            board[i][j] == FLAG_MINE;
+            board[i][j] = FLAG_MINE;
             return 1;
     }
 
@@ -109,36 +109,44 @@ int display_board(int board[][GAME_COLS], unsigned int rows, unsigned int cols, 
     if (board[i][j] != UNKN_FREE && board[i][j] != UNKN_MINE)
         return 0;
 
-    switch (board[i][j]) {
-        case UNKN_MINE:
-            board[i][j] == MINE;
-            return -1;
-        case UNKN_FREE:
-            //switch da cambiare
-            switch (mines) {
-            case 1:
-                board[i][j] == C1;
-            case 2:
-                board[i][j] == C2;
-            case 3:
-                board[i][j] == C3;
-            case 4:
-                board[i][j] == C4;
-            case 5:
-                board[i][j] == C5;
-            case 6:
-                board[i][j] == C6;
-            case 7:
-                board[i][j] == C7;
-            case 8:
-                board[i][j] == C8;
-            default:
-                board[i][j] == C0;
+    //switch (board[i][j]) {
+    //    case UNKN_MINE:
+    //        board[i][j] = MINE;
+    //        return -1;
+    //    case UNKN_FREE:
+    //        //switch da cambiare
+    //        switch (mines) {
+    //        case 1:
+    //            board[i][j] = C1;
+    //            break;
+    //        case 2:
+    //            board[i][j] = C2;
+    //            break;
+    //        case 3:
+    //            board[i][j] = C3;
+    //            break;
+    //        case 4:
+    //            board[i][j] = C4;
+    //            break;
+    //        case 5:
+    //            board[i][j] = C5;
+    //            break;
+    //        case 6:
+    //            board[i][j] = C6;
+    //            break;
+    //        case 7:
+    //            board[i][j] = C7;
+    //            break;
+    //        case 8:
+    //            board[i][j] = C8;
+    //            break;
+    //        default:
+    //            board[i][j] = C0;
+    //            break;
 
+    //        }
 
-            }
-
-    }
+    //}
 
 }
 
