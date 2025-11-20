@@ -9,10 +9,33 @@
 #include "pacman.h"
 #include "matrix.h"
 
+struct ghost
+{
+    struct position position;
+    enum ghosts_status status;
+};
+
+struct ghosts
+{
+    struct ghost* ghosts_array;
+    unsigned int row;
+    unsigned int column;
+    char** arena;
+    unsigned int ghost_count;
+} ghosts;
 
 /* Create the ghosts data structure */
 struct ghosts* ghosts_setup(unsigned int num_ghosts) {
-    struct ghosts* g = NULL;
+    //creo in memoria la struttura 
+    struct ghosts* g = malloc(sizeof(ghosts));
+    //se non riesco a mettere la struttura in memoria rompo l'esecuzione e libero la memoria
+    if (g == NULL) {
+        return NULL;
+        free(g);
+    }
+
+    //!DA FINIRE!
+
     return g;
 }
 
