@@ -21,7 +21,7 @@ int num_neighbor_mines(int board[][GAME_COLS], unsigned int ro, unsigned int col
     int neighbor_mines = 0;
     int i, j;
     int min_x = check_map_corners((int)ro - 1);
-    int max_x = check_map_corners(ro + 1);
+    int max_x = check_map_corners((int)ro + 1);
 
     int min_y = check_map_corners((int)(col)-1);
     int max_y = check_map_corners((int)(col)+1);
@@ -40,7 +40,7 @@ int num_neighbor_flags(int board[][GAME_COLS], unsigned int ro, unsigned int col
     int neighbor_flags = 0;
     int i, j;
     int min_x = check_map_corners((int)ro - 1);
-    int max_x = check_map_corners(ro + 1);
+    int max_x = check_map_corners((int)ro + 1);
 
     int min_y = check_map_corners((int)(col)-1);
     int max_y = check_map_corners((int)(col)+1);
@@ -112,10 +112,10 @@ int display_cell(int board[][GAME_COLS], unsigned int ro, unsigned int col, int 
 
         int i, j;
         int min_x = check_map_corners((int)(ro)-1);
-        int max_x = check_map_corners(ro + 1);
+        int max_x = check_map_corners((int)ro + 1);
 
         int min_y = check_map_corners((int)(col)-1);
-        int max_y = check_map_corners(col + 1);
+        int max_y = check_map_corners((int)col + 1);
 
         for (i = min_x; i <= max_x; i++) {
             for (j = min_y; j <= max_y; j++) {
@@ -135,7 +135,7 @@ void check_start(int board[][GAME_COLS], unsigned int ro, unsigned int col, int 
     //contatori per cicli for per matrice
     int i, j;
     int min_x = check_map_corners((int)ro - 1);
-    int max_x = check_map_corners(ro + 1);
+    int max_x = check_map_corners((int)ro + 1);
 
     int min_y = check_map_corners((int)(col)-1);
     int max_y = check_map_corners((int)(col)+1);
@@ -254,10 +254,10 @@ int expand_board(int board[][GAME_COLS], unsigned int rows, unsigned int cols, u
     // contatori for per vedere se nell'intorno di i,j ci sono mine non flaggate
     int k, f;
     int min_x = check_map_corners((int)i - 1);
-    int max_x = check_map_corners(i + 1);
+    int max_x = check_map_corners((int)i + 1);
 
     int min_y = check_map_corners((int)(j)-1);
-    int max_y = check_map_corners(j + 1);
+    int max_y = check_map_corners((int)j + 1);
 
     if (board[i][j] != UNKN_FREE && board[i][j] != UNKN_MINE) {
         for (k = min_x; k <= max_x ; k++) {
@@ -281,3 +281,4 @@ int expand_board(int board[][GAME_COLS], unsigned int rows, unsigned int cols, u
 
 
 #endif
+
