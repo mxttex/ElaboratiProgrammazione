@@ -128,7 +128,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="arena.c" />
+    <ClCompile Include="display.c" />
+    <ClCompile Include="ghosts.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="matrix.c" />
+    <ClCompile Include="pacman.c" />
+    <ClCompile Include="queue.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="arena.h" />
+    <ClInclude Include="display.h" />
+    <ClInclude Include="ghosts.h" />
+    <ClInclude Include="global.h" />
+    <ClInclude Include="matrix.h" />
+    <ClInclude Include="pacman.h" />
+    <ClInclude Include="queue.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
