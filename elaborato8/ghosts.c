@@ -8,15 +8,22 @@
 #include "ghosts.h"
 #include "pacman.h"
 #include "matrix.h"
+#include "global.h"
 
-struct ghost
+//dichiarazioni delle possibili direzioni
+#define UP -1
+#define DOWN +1
+#define LEFT -1
+#define RIGHT +1
+
+typedef struct ghost
 {
 	struct position position;
 	enum ghost_status status;
 	unsigned int id;
 } ghost;
 
-struct ghosts
+typedef struct ghosts
 {
 	struct ghost* ghosts_array;
 	unsigned int row;
@@ -27,7 +34,7 @@ struct ghosts
 
 static struct ghost* get_ghost_by_id(struct ghosts* G, unsigned int id) {
 	int i;
-	for (i=0; i < G->ghost_count; i++) {
+	for (i = 0; i < G->ghost_count; i++) {
 		if (G->ghosts_array[i].id == id)
 			return &(G->ghosts_array[i]);
 	}
@@ -38,13 +45,12 @@ static struct ghost* get_ghost_by_id(struct ghosts* G, unsigned int id) {
 /* Create the ghosts data structure */
 struct ghosts* ghosts_setup(unsigned int num_ghosts) {
 	//creo in memoria la struttura 
-	struct ghosts* g = malloc(sizeof(ghosts));
+	ghosts* g = (ghosts *)malloc(sizeof(ghosts));
 	//se non riesco a mettere la struttura in memoria rompo l'esecuzione e libero la memoria
 	if (g == NULL) {
-		free(g);
 		return NULL;
 	}
-	struct ghost* g_a = malloc(num_ghosts * sizeof(ghost));
+	ghost* g_a = (ghost*)malloc(num_ghosts * sizeof(ghost));
 	if (g_a == NULL)
 	{
 		free(g);
@@ -89,14 +95,14 @@ void ghosts_set_arena(struct ghosts* G, char** A, unsigned int nrow,
 
 /* Set the position of the ghost id. */
 void ghosts_set_position(struct ghosts* G, unsigned int id, struct position pos) {
-	struct ghost* g = get_ghost_by_id(G, id);
+	ghost* g = get_ghost_by_id(G, id);
 	g->position = pos;
 	return;
 }
 
 /* Set the status of the ghost id. */
 void ghosts_set_status(struct ghosts* G, unsigned int id, enum ghost_status status) {
-	struct ghost* g = get_ghost_by_id(G, id);
+	ghost* g = get_ghost_by_id(G, id);
 	g->status = status;
 	return;
 }
@@ -109,16 +115,16 @@ unsigned int ghosts_get_number(struct ghosts* G) {
 /* Return the position of the ghost id. */
 struct position ghosts_get_position(struct ghosts* G, unsigned int id) {
 	struct position p;
-	struct ghost* g = get_ghost_by_id(G, id);
+	ghost* g = get_ghost_by_id(G, id);
 	if (g != NULL)
 		return g->position;
 	else
-		return (struct position){ 0, 0 };
+		return (struct position) { 0, 0 };
 }
 
 /* Return the status of the ghost id. */
 enum ghost_status ghosts_get_status(struct ghosts* G, unsigned int id) {
-	struct ghost* g = get_ghost_by_id(G, id);
+	ghost* g = get_ghost_by_id(G, id);
 	if (g != NULL)
 		return g->status;
 	else
@@ -128,6 +134,21 @@ enum ghost_status ghosts_get_status(struct ghosts* G, unsigned int id) {
 /* Move the ghost id (according to its status). Returns the new position */
 struct position ghosts_move(struct ghosts* G, struct pacman* P, unsigned int id) {
 	struct position p;
+	ghost* g = get_ghost_by_id(G, id);
+	struct position pacman_position = pacman_get_position(P);
+	
+	char** a = G->arena;
+
+	switch (g->status) {
+	case NORMAL:
+		break;
+	case SCARED_NORMAL:
+		break;
+	case SCARED_BLINKING:
+		break;
+	case EYES:
+		break;
+	}
 	return p;
 }
 
