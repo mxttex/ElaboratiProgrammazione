@@ -31,7 +31,7 @@ struct snake* snake_create(unsigned int rows, unsigned int cols) {
 }
 
 void snake_kill(struct snake* s) {
-	free(s->body);
+	
 	free(s);
 }
 
