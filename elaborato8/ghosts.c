@@ -127,11 +127,11 @@
 			return 0;
 	}
 	/*funzione di utility che sistema la posizione del fantasmino nel caso vada oltre l'arena*/
-	static void pacman_effect(struct position* p, unsigned int rows, unsigned int cols) {
+	//static void pacman_effect(struct position* p, unsigned int rows, unsigned int cols) {
 
-		p->i = (p->i + rows) % rows;
-		p->j = (p->j + cols) % cols;
-	}
+	//	p->i = (p->i + rows) % rows;
+	//	p->j = (p->j + cols) % cols;
+	//}
 
 	static int check_if_position_is_already_occupied(struct position p, struct ghosts* G, unsigned int my_ghost_id) {
 		int loop_var;
@@ -165,25 +165,21 @@
 			candidate_pos = current_pos;
 			char dir_to_home = G->arena[current_pos.i][current_pos.j];
 			int is_valid = 1;
+			int move_i = 0;
+			int move_j = 0;
 
-			if (dir_to_home == 'U')
-			{
-				candidate_pos.i = current_pos.i - 1;
-			}
-			else if (dir_to_home == 'D')
-			{
-				candidate_pos.i = current_pos.i + 1;
-			}
+			if (dir_to_home == 'U')      
+				move_i = -1;
+			else if (dir_to_home == 'D') 
+				move_i = 1;
 			else if (dir_to_home == 'R')
-			{
-				candidate_pos.j = current_pos.j + 1;
-			}
-			else
-			{
-				candidate_pos.j = current_pos.j - 1;
-			}
+				move_j = 1;
+			else                         
+				move_j = -1;
 
-			pacman_effect(&candidate_pos, rows, cols);
+			candidate_pos.i = ((int)current_pos.i + move_i + (int)rows) % (int)rows;
+			candidate_pos.j = ((int)current_pos.j + move_j + (int)cols) % (int)cols;
+			//pacman_effect(&candidate_pos, rows, cols);
 
 			if (G->arena[candidate_pos.i][candidate_pos.j] == 'x')
 			{
@@ -219,11 +215,14 @@
 		for (loop_var = 0; loop_var < 4; loop_var++)
 		{
 			int is_valid = TRUE;
-			candidate_pos.i = current_pos.i + possible_moves_i[loop_var];
-			candidate_pos.j = current_pos.j + possible_moves_j[loop_var];
+			int next_i = (int)current_pos.i + possible_moves_i[loop_var];
+			int next_j = (int)current_pos.j + possible_moves_j[loop_var];
+
+			candidate_pos.i = (next_i + (int)rows) % (int)rows;
+			candidate_pos.j = (next_j + (int)cols) % (int)cols;
 			
 			//verifico che non vada oltre la grandezza massima dell'arena e nel caso sistemo
-			pacman_effect(&candidate_pos, rows, cols);
+			/*pacman_effect(&candidate_pos, rows, cols);*/
 
 			if (G->arena[candidate_pos.i][candidate_pos.j] == 'x' || check_if_position_is_already_occupied(candidate_pos, G, id) == TRUE)
 			{
@@ -240,8 +239,9 @@
 
 			if (is_valid) {
 				//calcolo la distanza utilizzando il teorema di pitagora, tutto alla seconda in questo modo uso solo interi
-				long root_dist = (long)(candidate_pos.i - pac_pos.i) * (candidate_pos.i - pac_pos.i) +
-					(long)(candidate_pos.j - pac_pos.j) * (candidate_pos.j - pac_pos.j);
+				long diff_i = (long)candidate_pos.i - (long)pac_pos.i;
+				long diff_j = (long)candidate_pos.j - (long)pac_pos.j;
+				long root_dist = diff_i * diff_i + diff_j * diff_j;
 
 				int is_better = FALSE;
 				if (best_dist == -1) {
