@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <limits.h>
-#include <curses.h>
+#include "curses.h"
 #include "display.h"
 
 // Sets the getch() timeout depending on the snake length.
