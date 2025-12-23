@@ -1,5 +1,5 @@
 # 📂 Riepilogo Test Automatici - Gruppo 24
-### Valutazione Finale: 29/30
+### Valutazione Finale: 29/30 (due punti in piu allo scritto)
 
 Di seguito il dettaglio degli esiti per ogni elaborato sottoposto alla suite di test.
 
@@ -33,3 +33,4 @@ L'elaborato 8 presenta anomalie nella gestione dei movimenti speciali (probabilm
     * *Posizione Attuale:* `[29,7]`
     * *Posizione Attesa:* `[29,8]`
     * *Nota:* Errore di calcolo della cella target (off-by-one).
+
