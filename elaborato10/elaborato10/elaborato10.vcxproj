@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>18.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{1298c20a-0e4a-4a0e-8e85-c99156d8e21f}</ProjectGuid>
-    <RootNamespace>esercizi_lab</RootNamespace>
+    <ProjectGuid>{7c3975ad-6637-4988-91ab-d7cd533a2688}</ProjectGuid>
+    <RootNamespace>elaborato10</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -106,7 +106,6 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp23</LanguageStandard>
       <CompileAs>CompileAsC</CompileAs>
-      <DisableLanguageExtensions>true</DisableLanguageExtensions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,11 +129,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="daBase10aN.h" />
-    <ClInclude Include="esercizio_date.h" />
-    <ClInclude Include="esercizio_triangoli.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

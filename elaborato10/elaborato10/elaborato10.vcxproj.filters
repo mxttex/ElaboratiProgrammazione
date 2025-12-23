@@ -19,15 +19,4 @@
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="esercizio_triangoli.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="esercizio_date.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-    <ClInclude Include="daBase10aN.h">
-      <Filter>File di intestazione</Filter>
-    </ClInclude>
-  </ItemGroup>
 </Project>
